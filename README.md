@@ -11,7 +11,7 @@ This RShiny dashboard showcases Premier League results and xG data from the 2020
 
 ### Results
 
-•	Data sourced from ESPN.co.uk Premier League results (espn.co.uk/football/)
+•	Data sourced from ESPN.co.uk Premier League results (https://www.espn.co.uk/football/)
 
 • The user selects a team from a drop-down menu and is presented with an overview of their performance in the 2020/21 season, such as games played, won, drawn and lost as well a full breakdown of their results
 
