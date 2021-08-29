@@ -1,5 +1,5 @@
 # Scrapes Premier League results for every team from https://www.espn.co.uk and returns a table of results
-# URL is https://www.espn.co.uk/football/team/results/_/id/team_id/league/ENG.1/season/2020 where team_id
+# URL is https://www.espn.co.uk/football/team/results/_/id/team_id/league/ENG.1/season/2021 where team_id
 # is one of the entries in the vector team_ids
 
 library(textreadr)
