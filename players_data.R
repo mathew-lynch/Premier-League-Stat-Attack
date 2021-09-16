@@ -46,9 +46,6 @@ get_player_data <- function() {
   players_data <- players_data %>% 
     mutate_if(is_all_numeric,as.numeric)
   
-  # Some players have played for two teams - split teams into two columns
-  #players_data = players_data %>% separate(team_title, c("team_title", "second_team_title"), ",")
-  
   # Add new columns to data
   players_data$xG90 = (players_data$xG/players_data$time)*90
   players_data$npxG90 = (players_data$npxG/players_data$time)*90
