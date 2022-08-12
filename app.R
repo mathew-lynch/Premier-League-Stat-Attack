@@ -22,16 +22,16 @@ library(fmsb)
 # Code called before app launch
 
 # Team names - these are different for different data sources (i.e. ESPN and Understat)
-results_team_names = c("Arsenal", "Aston Villa", "Brentford", "Brighton & Hove Albion", "Burnley", "Chelsea",
-                       "Crystal Palace", "Everton", "Leeds United", "Leicester City",
+results_team_names = c("AFC Bournemouth", "Arsenal", "Aston Villa", "Brentford", "Brighton & Hove Albion", "Chelsea",
+                       "Crystal Palace", "Everton", "Fulham", "Leeds United", "Leicester City",
                        "Liverpool", "Manchester City", "Manchester United", "Newcastle United",
-                       "Norwich City", "Southampton", "Tottenham Hotspur",
-                       "Watford", "West Ham United", "Wolverhampton Wanderers")
+                       "Nottingham Forest", "Southampton", "Tottenham Hotspur",
+                       "West Ham United", "Wolverhampton Wanderers")
 
-xG_team_names = c("Arsenal", "Aston Villa", "Brentford", "Brighton", "Burnley", "Chelsea",
-                  "Crystal Palace", "Everton", "Leeds", "Leicester",
+xG_team_names = c("Bournemouth", "Arsenal", "Aston Villa", "Brentford", "Brighton", "Chelsea",
+                  "Crystal Palace", "Everton", "Fulham", "Leeds", "Leicester",
                   "Liverpool", "Manchester City", "Manchester United", "Newcastle United",
-                  "Norwich", "Southampton", "Tottenham", "Watford",
+                  "Nottingham Forest", "Southampton", "Tottenham",
                   "West Ham", "Wolverhampton Wanderers")
 
 # 1. Results analysis
@@ -111,7 +111,7 @@ ui <- dashboardPage(
                 column(3,
                        style='padding-left:20px; padding-right:0px; padding-top:40px; padding-bottom:40px',
                        selectInput(inputId = "results_team", label = "Select team:",
-                                   choices = results_team_names, selected = "Arsenal")),
+                                   choices = results_team_names, selected = "AFC Bournemouth")),
                 
                 # Number of games played
                 column(2,
@@ -674,7 +674,10 @@ server <- function(input, output, session) {
   output$results_colour <- renderUI({
     # Ensures the colour only changes when on the correct tab
     if (input$tabs == "results") {
-      if (input$results_team == "Arsenal") {
+      if (input$results_team == "AFC Bournemouth") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#B50E12;}", ".skin-blue .main-header .logo:hover {background-color:", "#B50E12;}", ".skin-blue .main-header .navbar {background-color:", "#B50E12;}")))))
+      }
+      else if (input$results_team == "Arsenal") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#EF0107;}", ".skin-blue .main-header .logo:hover {background-color:", "#EF0107;}", ".skin-blue .main-header .navbar {background-color:", "#EF0107;}")))))
       } 
       else if (input$results_team == "Aston Villa") {
@@ -686,9 +689,6 @@ server <- function(input, output, session) {
       else if (input$results_team == "Brighton & Hove Albion") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#0057B8;}", ".skin-blue .main-header .logo:hover {background-color:", "#0057B8;}", ".skin-blue .main-header .navbar {background-color:", "#0057B8;}")))))
       } 
-      else if (input$results_team == "Burnley") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#6C1D45;}", ".skin-blue .main-header .logo:hover {background-color:", "#6C1D45;}", ".skin-blue .main-header .navbar {background-color:", "#6C1D45;}")))))
-      } 
       else if (input$results_team == "Chelsea") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#034694;}", ".skin-blue .main-header .logo:hover {background-color:", "#034694;}", ".skin-blue .main-header .navbar {background-color:", "#034694;}")))))
       } 
@@ -697,6 +697,9 @@ server <- function(input, output, session) {
       }
       else if (input$results_team == "Everton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#003399;}", ".skin-blue .main-header .logo:hover {background-color:", "#003399;}", ".skin-blue .main-header .navbar {background-color:", "#003399;}")))))
+      }
+      else if (input$results_team == "Fulham") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#000000;}", ".skin-blue .main-header .logo:hover {background-color:", "#000000;}", ".skin-blue .main-header .navbar {background-color:", "#000000;}")))))
       }
       else if (input$results_team == "Leeds United") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFCD00;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFCD00;}", ".skin-blue .main-header .navbar {background-color:", "#FFCD00;}")))))
@@ -716,8 +719,8 @@ server <- function(input, output, session) {
       else if (input$results_team == "Newcastle United") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#241F20;}", ".skin-blue .main-header .logo:hover {background-color:", "#241F20;}", ".skin-blue .main-header .navbar {background-color:", "#241F20;}")))))
       }
-      else if (input$results_team == "Norwich City") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFF200;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFF200;}", ".skin-blue .main-header .navbar {background-color:", "#FFF200;}")))))
+      else if (input$results_team == "Nottingham Forest") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#E53233;}", ".skin-blue .main-header .logo:hover {background-color:", "#E53233;}", ".skin-blue .main-header .navbar {background-color:", "#E53233;}")))))
       }
       else if (input$results_team == "Southampton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#D71920;}", ".skin-blue .main-header .logo:hover {background-color:", "#D71920;}", ".skin-blue .main-header .navbar {background-color:", "#D71920;}")))))
@@ -739,6 +742,9 @@ server <- function(input, output, session) {
       if (input$xG_team == "All") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#928FA5;}", ".skin-blue .main-header .logo:hover {background-color:", "#928FA5;}", ".skin-blue .main-header .navbar {background-color:", "#928FA5;}")))))
       }
+      else if (input$xG_team == "Bournemouth") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#B50E12;}", ".skin-blue .main-header .logo:hover {background-color:", "#B50E12;}", ".skin-blue .main-header .navbar {background-color:", "#B50E12;}")))))
+      }
       else if (input$xG_team == "Arsenal") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#EF0107;}", ".skin-blue .main-header .logo:hover {background-color:", "#EF0107;}", ".skin-blue .main-header .navbar {background-color:", "#EF0107;}")))))
       } 
@@ -751,9 +757,6 @@ server <- function(input, output, session) {
       else if (input$xG_team == "Brighton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#0057B8;}", ".skin-blue .main-header .logo:hover {background-color:", "#0057B8;}", ".skin-blue .main-header .navbar {background-color:", "#0057B8;}")))))
       } 
-      else if (input$xG_team == "Burnley") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#6C1D45;}", ".skin-blue .main-header .logo:hover {background-color:", "#6C1D45;}", ".skin-blue .main-header .navbar {background-color:", "#6C1D45;}")))))
-      } 
       else if (input$xG_team == "Chelsea") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#034694;}", ".skin-blue .main-header .logo:hover {background-color:", "#034694;}", ".skin-blue .main-header .navbar {background-color:", "#034694;}")))))
       } 
@@ -762,6 +765,9 @@ server <- function(input, output, session) {
       }
       else if (input$xG_team == "Everton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#003399;}", ".skin-blue .main-header .logo:hover {background-color:", "#003399;}", ".skin-blue .main-header .navbar {background-color:", "#003399;}")))))
+      }
+      else if (input$xG_team == "Fulham") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#000000;}", ".skin-blue .main-header .logo:hover {background-color:", "#000000;}", ".skin-blue .main-header .navbar {background-color:", "#000000;}")))))
       }
       else if (input$xG_team == "Leeds") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFCD00;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFCD00;}", ".skin-blue .main-header .navbar {background-color:", "#FFCD00;}")))))
@@ -781,17 +787,14 @@ server <- function(input, output, session) {
       else if (input$xG_team == "Newcastle United") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#241F20;}", ".skin-blue .main-header .logo:hover {background-color:", "#241F20;}", ".skin-blue .main-header .navbar {background-color:", "#241F20;}")))))
       }
-      else if (input$xG_team == "Norwich") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFF200;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFF200;}", ".skin-blue .main-header .navbar {background-color:", "#FFF200;}")))))
+      else if (input$xG_team == "Nottingham Forest") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#E53233;}", ".skin-blue .main-header .logo:hover {background-color:", "#E53233;}", ".skin-blue .main-header .navbar {background-color:", "#E53233;}")))))
       }
       else if (input$xG_team == "Southampton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#D71920;}", ".skin-blue .main-header .logo:hover {background-color:", "#D71920;}", ".skin-blue .main-header .navbar {background-color:", "#D71920;}")))))
       }
       else if (input$xG_team == "Tottenham") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#132257;}", ".skin-blue .main-header .logo:hover {background-color:", "#132257;}", ".skin-blue .main-header .navbar {background-color:", "#132257;}")))))
-      }
-      else if (input$xG_team == "Watford") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FBEE23;}", ".skin-blue .main-header .logo:hover {background-color:", "#FBEE23;}", ".skin-blue .main-header .navbar {background-color:", "#FBEE23;}")))))
       }
       else if (input$xG_team == "West Ham") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#7A263A;}", ".skin-blue .main-header .logo:hover {background-color:", "#7A263A;}", ".skin-blue .main-header .navbar {background-color:", "#7A263A;}")))))
@@ -1047,7 +1050,10 @@ server <- function(input, output, session) {
   # Background colour - changes depending on team selected
   output$players_colour <- renderUI({
     if (input$tabs == "results") {
-      if (input$results_team == "Arsenal") {
+      if (input$results_team == "AFC Bournemouth") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#B50E12;}", ".skin-blue .main-header .logo:hover {background-color:", "#B50E12;}", ".skin-blue .main-header .navbar {background-color:", "#B50E12;}")))))
+      } 
+      else if (input$results_team == "Arsenal") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#EF0107;}", ".skin-blue .main-header .logo:hover {background-color:", "#EF0107;}", ".skin-blue .main-header .navbar {background-color:", "#EF0107;}")))))
       } 
       else if (input$results_team == "Aston Villa") {
@@ -1059,9 +1065,6 @@ server <- function(input, output, session) {
       else if (input$results_team == "Brighton & Hove Albion") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#0057B8;}", ".skin-blue .main-header .logo:hover {background-color:", "#0057B8;}", ".skin-blue .main-header .navbar {background-color:", "#0057B8;}")))))
       } 
-      else if (input$results_team == "Burnley") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#6C1D45;}", ".skin-blue .main-header .logo:hover {background-color:", "#6C1D45;}", ".skin-blue .main-header .navbar {background-color:", "#6C1D45;}")))))
-      } 
       else if (input$results_team == "Chelsea") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#034694;}", ".skin-blue .main-header .logo:hover {background-color:", "#034694;}", ".skin-blue .main-header .navbar {background-color:", "#034694;}")))))
       } 
@@ -1070,6 +1073,9 @@ server <- function(input, output, session) {
       }
       else if (input$results_team == "Everton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#003399;}", ".skin-blue .main-header .logo:hover {background-color:", "#003399;}", ".skin-blue .main-header .navbar {background-color:", "#003399;}")))))
+      }
+      else if (input$results_team == "Fulham") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#000000;}", ".skin-blue .main-header .logo:hover {background-color:", "#000000;}", ".skin-blue .main-header .navbar {background-color:", "#000000;}")))))
       }
       else if (input$results_team == "Leeds United") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFCD00;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFCD00;}", ".skin-blue .main-header .navbar {background-color:", "#FFCD00;}")))))
@@ -1089,17 +1095,14 @@ server <- function(input, output, session) {
       else if (input$results_team == "Newcastle United") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#241F20;}", ".skin-blue .main-header .logo:hover {background-color:", "#241F20;}", ".skin-blue .main-header .navbar {background-color:", "#241F20;}")))))
       }
-      else if (input$results_team == "Norwich City") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFF200;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFF200;}", ".skin-blue .main-header .navbar {background-color:", "#FFF200;}")))))
+      else if (input$results_team == "Nottingham Forest") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#E53233;}", ".skin-blue .main-header .logo:hover {background-color:", "#E53233;}", ".skin-blue .main-header .navbar {background-color:", "#E53233;}")))))
       }
       else if (input$results_team == "Southampton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#D71920;}", ".skin-blue .main-header .logo:hover {background-color:", "#D71920;}", ".skin-blue .main-header .navbar {background-color:", "#D71920;}")))))
       }
       else if (input$results_team == "Tottenham Hotspur") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#132257;}", ".skin-blue .main-header .logo:hover {background-color:", "#132257;}", ".skin-blue .main-header .navbar {background-color:", "#132257;}")))))
-      }
-      else if (input$xG_team == "Watford") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FBEE23;}", ".skin-blue .main-header .logo:hover {background-color:", "#FBEE23;}", ".skin-blue .main-header .navbar {background-color:", "#FBEE23;}")))))
       }
       else if (input$results_team == "West Ham United") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#7A263A;}", ".skin-blue .main-header .logo:hover {background-color:", "#7A263A;}", ".skin-blue .main-header .navbar {background-color:", "#7A263A;}")))))
@@ -1112,6 +1115,9 @@ server <- function(input, output, session) {
       if (input$xG_team == "All") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#928FA5;}", ".skin-blue .main-header .logo:hover {background-color:", "#928FA5;}", ".skin-blue .main-header .navbar {background-color:", "#928FA5;}")))))
       }
+      else if (input$xG_team == "Bournemouth") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#B50E12;}", ".skin-blue .main-header .logo:hover {background-color:", "#B50E12;}", ".skin-blue .main-header .navbar {background-color:", "#B50E12;}")))))
+      } 
       else if (input$xG_team == "Arsenal") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#EF0107;}", ".skin-blue .main-header .logo:hover {background-color:", "#EF0107;}", ".skin-blue .main-header .navbar {background-color:", "#EF0107;}")))))
       } 
@@ -1124,9 +1130,6 @@ server <- function(input, output, session) {
       else if (input$xG_team == "Brighton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#0057B8;}", ".skin-blue .main-header .logo:hover {background-color:", "#0057B8;}", ".skin-blue .main-header .navbar {background-color:", "#0057B8;}")))))
       } 
-      else if (input$xG_team == "Burnley") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#6C1D45;}", ".skin-blue .main-header .logo:hover {background-color:", "#6C1D45;}", ".skin-blue .main-header .navbar {background-color:", "#6C1D45;}")))))
-      } 
       else if (input$xG_team == "Chelsea") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#034694;}", ".skin-blue .main-header .logo:hover {background-color:", "#034694;}", ".skin-blue .main-header .navbar {background-color:", "#034694;}")))))
       } 
@@ -1135,6 +1138,9 @@ server <- function(input, output, session) {
       }
       else if (input$xG_team == "Everton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#003399;}", ".skin-blue .main-header .logo:hover {background-color:", "#003399;}", ".skin-blue .main-header .navbar {background-color:", "#003399;}")))))
+      }
+      else if (input$xG_team == "Fulham") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#000000;}", ".skin-blue .main-header .logo:hover {background-color:", "#000000;}", ".skin-blue .main-header .navbar {background-color:", "#000000;}")))))
       }
       else if (input$xG_team == "Leeds") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFCD00;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFCD00;}", ".skin-blue .main-header .navbar {background-color:", "#FFCD00;}")))))
@@ -1154,17 +1160,14 @@ server <- function(input, output, session) {
       else if (input$xG_team == "Newcastle United") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#241F20;}", ".skin-blue .main-header .logo:hover {background-color:", "#241F20;}", ".skin-blue .main-header .navbar {background-color:", "#241F20;}")))))
       }
-      else if (input$xG_team == "Norwich") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FFF200;}", ".skin-blue .main-header .logo:hover {background-color:", "#FFF200;}", ".skin-blue .main-header .navbar {background-color:", "#FFF200;}")))))
+      else if (input$xG_team == "Nottingham Forest") {
+        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#E53233;}", ".skin-blue .main-header .logo:hover {background-color:", "#E53233;}", ".skin-blue .main-header .navbar {background-color:", "#E53233;}")))))
       }
       else if (input$xG_team == "Southampton") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#D71920;}", ".skin-blue .main-header .logo:hover {background-color:", "#D71920;}", ".skin-blue .main-header .navbar {background-color:", "#D71920;}")))))
       }
       else if (input$xG_team == "Tottenham") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#132257;}", ".skin-blue .main-header .logo:hover {background-color:", "#132257;}", ".skin-blue .main-header .navbar {background-color:", "#132257;}")))))
-      }
-      else if (input$xG_team == "Watford") {
-        return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#FBEE23;}", ".skin-blue .main-header .logo:hover {background-color:", "#FBEE23;}", ".skin-blue .main-header .navbar {background-color:", "#FBEE23;}")))))
       }
       else if (input$xG_team == "West Ham") {
         return(tags$head(tags$style(HTML(paste('.skin-blue .main-header .logo { background-color:', "#7A263A;}", ".skin-blue .main-header .logo:hover {background-color:", "#7A263A;}", ".skin-blue .main-header .navbar {background-color:", "#7A263A;}")))))
