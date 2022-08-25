@@ -82,7 +82,7 @@ player_xG <- get_player_data()
 player_xG$player_name <- gsub("&#039;", "'", player_xG$player_name)
 
 # There are two players called Emerson - for uniqueness, we amend these entries
-player_xG$player_name[player_xG$player_name == "Emerson" & player_xG$team_title == "Chelsea"] = "Emerson Palmieri"
+player_xG$player_name[player_xG$player_name == "Emerson" & player_xG$team_title == "West Ham"] = "Emerson Palmieri"
 player_xG$player_name[player_xG$player_name == "Emerson" & player_xG$team_title == "Tottenham"] = "Emerson Royal"
 
 
