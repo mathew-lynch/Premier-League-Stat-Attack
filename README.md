@@ -7,13 +7,13 @@ The dashboard is hosted by shinyapps.io and is available at https://mlynch98.shi
 
 ## The dashboard
 
-This RShiny dashboard showcases Premier League results and xG data from the 2023/24 season. Expected goals has become an important metric in analysing over- and under-performing teams and players. In spite of its limitations, it gives a fascinating insight into performance and incorporates analytics and predictive modelling into understanding the complexities of the beautiful game.  
+This RShiny dashboard showcases Premier League results and xG data from the 2025/26 season. Expected goals has become an important metric in analysing over- and under-performing teams and players. In spite of its limitations, it gives a fascinating insight into performance and incorporates analytics and predictive modelling into understanding the complexities of the beautiful game.  
 
 ### Results
 
 •	Data sourced from ESPN.co.uk Premier League results (https://www.espn.co.uk/football/)
 
-• The user selects a team from a drop-down menu and is presented with an overview of their performance in the 2023/24 season, such as games played, won, drawn and lost as well a full breakdown of their results
+• The user selects a team from a drop-down menu and is presented with an overview of their performance in the 2025/26 season, such as games played, won, drawn and lost as well a full breakdown of their results
 
 • The team's performance relative to their league rivals is presented in terms of their league rank for wins, draws and losses both home and away
 
